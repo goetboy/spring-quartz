@@ -3,7 +3,6 @@ package pers.goetboy.quartz.model.vo;
 
 
 import pers.goetboy.common.bean.BeanConverter;
-import pers.goetboy.common.Pageable;
 
 import java.util.Date;
 
@@ -11,7 +10,7 @@ import java.util.Date;
  * @author:goetboy;
  * @date 2018 /12 /20
  **/
-public class ScheduleJobVo  extends Pageable {
+public class ScheduleJobVo  {
 
     /**
      * 任务调度的参数key

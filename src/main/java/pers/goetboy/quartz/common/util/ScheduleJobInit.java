@@ -1,5 +1,6 @@
 package pers.goetboy.quartz.common.util;
 
+import org.quartz.SchedulerException;
 import pers.goetboy.quartz.services.ScheduleJobService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,7 +35,7 @@ public class ScheduleJobInit {
      * 容器加载 servlet 时执行此方法 将数据库中配置的job装载
      */
     @PostConstruct
-    public void init() {
+    public void init() throws SchedulerException {
         logger.info("init job...");
         scheduleJobService.initScheduleJob();
         logger.info("end");

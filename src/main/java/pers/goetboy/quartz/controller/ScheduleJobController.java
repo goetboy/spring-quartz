@@ -1,8 +1,9 @@
 package pers.goetboy.quartz.controller;
 
-import pers.goetboy.common.PageGrid;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import org.quartz.SchedulerException;
 import pers.goetboy.common.exception.service.ServiceTipsException;
-import pers.goetboy.quartz.common.exception.SchedulerException;
 import pers.goetboy.quartz.job.JOB_ENUM;
 import pers.goetboy.quartz.model.entity.ScheduleJob;
 import pers.goetboy.quartz.model.vo.ScheduleJobVo;
@@ -111,7 +112,7 @@ public class ScheduleJobController extends AbstractController {
      * @return null
      */
     @PostMapping(value = "/save")
-    public ResponseEntity saveScheduleJob(@RequestBody ScheduleJobVo scheduleJobVo) {
+    public ResponseEntity saveScheduleJob(@RequestBody ScheduleJobVo scheduleJobVo) throws SchedulerException {
 
         if (scheduleJobVo.getScheduleJobId() == null) {
             scheduleJobService.insert(scheduleJobVo);
@@ -129,12 +130,12 @@ public class ScheduleJobController extends AbstractController {
      *
      * @return 任务列表分页数据
      * @see pers.goetboy.quartz.constant.TRIGGER_STATE_ENUM job状态枚举
-     * @see PageGrid 分页
      */
     @GetMapping(value = "/list")
-    public ResponseEntity<PageGrid<ScheduleJob>> listScheduleJob(ScheduleJobVo scheduleJobVo) throws ServiceTipsException {
+    public ResponseEntity<IPage<ScheduleJob>> listScheduleJob(Integer current, Integer size) throws ServiceTipsException {
+        Page page = new Page(current, size);
 
-        PageGrid<ScheduleJob> pageGrid = scheduleJobService.page(scheduleJobVo);
+        IPage<ScheduleJob> pageGrid = scheduleJobService.page(page);
         return success(pageGrid);
     }
 
@@ -157,6 +158,7 @@ public class ScheduleJobController extends AbstractController {
     @GetMapping(value = "/executing/list")
     @Deprecated
     public ResponseEntity<List<ScheduleJobVo>> listExecutingScheduleJob() throws ServiceTipsException {
+
         List<ScheduleJobVo> executingJobList = scheduleJobService.queryExecutingJobList();
         return success(executingJobList);
     }

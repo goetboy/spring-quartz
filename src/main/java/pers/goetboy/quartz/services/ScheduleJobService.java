@@ -3,16 +3,8 @@ package pers.goetboy.quartz.services;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import pers.goetboy.common.PageGrid;
-import pers.goetboy.common.bean.BeanConverter;
-import pers.goetboy.common.exception.service.ServiceTipsException;
-import pers.goetboy.quartz.common.util.ScheduleUtils;
-import pers.goetboy.quartz.constant.TRIGGER_STATE_ENUM;
-import pers.goetboy.quartz.mapper.ScheduleJobMapper;
-import pers.goetboy.quartz.model.entity.ScheduleJob;
-import pers.goetboy.quartz.model.vo.ScheduleJobVo;
-
 import org.apache.commons.collections4.CollectionUtils;
+
 import org.apache.commons.lang3.StringUtils;
 import org.quartz.*;
 import org.quartz.impl.matchers.GroupMatcher;
@@ -21,6 +13,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import pers.goetboy.common.bean.BeanConverter;
+import pers.goetboy.common.exception.service.ServiceTipsException;
+import pers.goetboy.quartz.common.util.ScheduleUtils;
+import pers.goetboy.quartz.constant.TRIGGER_STATE_ENUM;
+import pers.goetboy.quartz.mapper.ScheduleJobMapper;
+import pers.goetboy.quartz.model.entity.ScheduleJob;
+import pers.goetboy.quartz.model.vo.ScheduleJobVo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -204,9 +203,9 @@ public class ScheduleJobService {
      * @param scheduleJobVo 查询条件
      * @return 分页数据
      */
-    public IPage<ScheduleJob> page(ScheduleJobVo scheduleJobVo) throws ServiceTipsException {
-        IPage<ScheduleJob> pages = new Page<>(scheduleJobVo.getCurPage(), scheduleJobVo.getItemsPerPage());
-        pages = scheduleJobMapper.selectPage(pages, null);
+    public IPage<ScheduleJob> page(Page page) throws ServiceTipsException {
+
+        IPage<ScheduleJob> pages = scheduleJobMapper.selectPage(page, null);
         try {
             for (ScheduleJob vo : pages.getRecords()) {
                 JobKey jobKey = ScheduleUtils.getJobKey(vo.getJobName(), vo.getJobGroup());

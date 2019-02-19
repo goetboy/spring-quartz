@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
  * @date 2018 /12 /26
  **/
 @Component
-@PropertySource("classpath:config/config.properties")
+@PropertySource("classpath:config.properties")
 public class Config {
     @Value("${mail.server.ip}")
     private String ip;

@@ -1,7 +1,6 @@
 package pers.goetboy.quartz.model.entity;
 
 import pers.goetboy.common.bean.BeanConverter;
-import pers.goetboy.common.Pageable;
 import pers.goetboy.common.exception.BaseException;
 import com.fasterxml.jackson.annotation.JsonFormat;
 

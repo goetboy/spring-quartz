@@ -43,12 +43,11 @@ public class ScheduleJobLogService {
      * @param scheduleJobLog 日志参数
      * @return 日志分页列表
      */
-    public IPage<ScheduleJobLog> page(ScheduleJobLogVo scheduleJobLog) {
-        IPage page = new Page(scheduleJobLog.getCurPage(), scheduleJobLog.getItemsPerPage());
-        page = scheduleJobLogMapper.selectPage(page, null);
+    public IPage<ScheduleJobLog> page(Page page) {
+        IPage retPage = scheduleJobLogMapper.selectPage(page, null);
 
 
-        return page;
+        return retPage;
 
     }
 
