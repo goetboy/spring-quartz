@@ -34,7 +34,7 @@ public abstract class AccessMonitorBaseJob {
      * 初始化调度任务.
      * 由于调度任务是通过反射执行，类中某些属性不能初始化 可以通过调用此方法初始化
      * 如果派生类有新的属性需要处理，或者其它处理需求 可以重写此方法
-     * 目前仅有一个属性{@link #baseDao}
+     * 目前仅有一个属性{@link #baseDao}需要初始化
      */
     public void initJob() {
         if (baseDao == null) {

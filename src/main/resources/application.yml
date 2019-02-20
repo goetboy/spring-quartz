@@ -10,7 +10,6 @@ debug: true
 mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true
-  mapper-locations: classpath:pers.goetboy.*.mapper
   type-aliases-package: classpath:pers.goetboy.*.model.entity
 server:
   port: 8080

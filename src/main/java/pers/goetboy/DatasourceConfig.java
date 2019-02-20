@@ -46,32 +46,18 @@ public class DatasourceConfig {
         return driverManagerDataSource;
 
     }
-   /* @Bean
-    @ConfigurationProperties(prefix = "spring.datasource.primary")
-    public DataSource defaultDataSource() {
-        return DataSourceBuilder.create().build();
-    }
-*/
-
     /**
      * @return 作业源
      */
-    @Bean
-    public DriverManagerDataSource prlifeDataSource() {
+ /*   @Bean
+    public DriverManagerDataSource jobDataSource() {
         DriverManagerDataSource driverManagerDataSource = new DriverManagerDataSource();
         driverManagerDataSource.setDriverClassName(environment.getProperty("jdbc.driverClassName"));
-        driverManagerDataSource.setUrl(environment.getProperty("jdbc.prlife.url"));
-        driverManagerDataSource.setUsername(environment.getProperty("jdbc.prlife.username"));
-        driverManagerDataSource.setPassword(environment.getProperty("jdbc.prlife.password"));
+        driverManagerDataSource.setUrl(environment.getProperty("jdbc.job1.url"));
+        driverManagerDataSource.setUsername(environment.getProperty("jdbc.job1.username"));
+        driverManagerDataSource.setPassword(environment.getProperty("jdbc.job1.password"));
         return driverManagerDataSource;
-    }
-  /*  @Bean
-    @ConfigurationProperties(prefix = "spring.datasource.job1")
-    public DataSource prlifeDataSource() {
-        return DataSourceBuilder.create().build();
-    }
-*/
-
+    }*/
 
     /**
      * @return 动态数据源
@@ -82,7 +68,7 @@ public class DatasourceConfig {
         dynamicDataSource.setDefaultTargetDataSource(defaultDataSource());
         Map<Object, Object> map = new HashMap<>(2);
         map.put("dataSource", defaultDataSource());
-        map.put("prlifeDataSource", prlifeDataSource());
+      //  map.put("job1", prlifeDataSource());
         dynamicDataSource.setTargetDataSources(map);
         return dynamicDataSource;
     }
@@ -113,9 +99,9 @@ public class DatasourceConfig {
 
 
     /**
-     * 自定义的jdbcTemlate
+     * jdbcTemlate
      *
-     * @return jdbc模板
+     * @return jdbcTemlate
      */
     @Bean(name = "jdbcTemplate")
     public BaseDao jdbcTemplate() {

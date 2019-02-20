@@ -41,11 +41,15 @@ public class ScheduleJobService {
     /**
      * 调度工厂Bean
      */
-    @Autowired
-    private Scheduler scheduler;
+    private final Scheduler scheduler;
+
+    private final ScheduleJobMapper scheduleJobMapper;
 
     @Autowired
-    private ScheduleJobMapper scheduleJobMapper;
+    public ScheduleJobService(Scheduler scheduler, ScheduleJobMapper scheduleJobMapper) {
+        this.scheduler = scheduler;
+        this.scheduleJobMapper = scheduleJobMapper;
+    }
 
 
     /**
@@ -200,7 +204,7 @@ public class ScheduleJobService {
     /**
      * 分页查询
      *
-     * @param scheduleJobVo 查询条件
+     * @param page 查询条件
      * @return 分页数据
      */
     public IPage<ScheduleJob> page(Page page) throws ServiceTipsException {

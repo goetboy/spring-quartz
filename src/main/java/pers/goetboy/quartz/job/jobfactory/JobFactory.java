@@ -3,7 +3,7 @@ package pers.goetboy.quartz.job.jobfactory;
 import org.quartz.Job;
 
 /**
- * 普通任务工厂.
+ * 任务工厂.
  * 所有job类均可通过此job工厂类执行
  *
  * @author:goetboy;

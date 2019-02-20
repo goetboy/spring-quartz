@@ -12,15 +12,8 @@ import java.util.Map;
  * @date 2019 /01 /03
  **/
 public enum JOB_ENUM {
-    payInfoErrJob(/*"支付后未推送成功异常检测",*/ "pers.goetboy.quartz.job.PayInfoErrJob"),
-    payInfoErrJob2(/*"没有支付记录核心已支付异常检测",*/ "pers.goetboy.quartz.job.PayInfoErrJob2");
-    //private String charatCn;
+    Job_1("pers.goetboy.quartz.job.Job1");
     private String classPath;
-
-   /* JOB_ENUM(String charatCn, String classPath) {
-        this.charatCn = charatCn;
-        this.classPath = classPath;
-    }*/
 
     JOB_ENUM(String classPath) {
         this.classPath = classPath;
@@ -38,7 +31,6 @@ public enum JOB_ENUM {
         return list;
     }
 
-    //public String getCharatCn() {return charatCn;  }
 
     public String getClassPath() {
         return classPath;
