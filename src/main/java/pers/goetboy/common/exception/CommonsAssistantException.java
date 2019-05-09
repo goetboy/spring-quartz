@@ -5,6 +5,8 @@ package pers.goetboy.common.exception;
  * @date 2018 /12 /27
  **/
 public class CommonsAssistantException extends BaseException {
+    private static final long serialVersionUID = 1L;
+
     public CommonsAssistantException() {
         super();
     }

@@ -9,6 +9,8 @@ import pers.goetboy.common.exception.service.BaseServiceException;
  * @date 2019 /01 /23
  **/
 public class UnsentMessageException extends BaseServiceException {
+    private static final long serialVersionUID = 1L;
+
     public UnsentMessageException() {
     }
 

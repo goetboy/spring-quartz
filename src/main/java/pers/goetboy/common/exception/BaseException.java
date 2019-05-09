@@ -8,6 +8,7 @@ package pers.goetboy.common.exception;
  * @date 2018 /12 /24
  **/
 public class BaseException extends RuntimeException {
+    private static final long serialVersionUID = 1L;
     Integer resultcode;
     String resultMessage;
 

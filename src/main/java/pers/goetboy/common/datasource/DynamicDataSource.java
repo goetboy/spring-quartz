@@ -1,7 +1,5 @@
 package pers.goetboy.common.datasource;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
 
 
@@ -12,7 +10,6 @@ import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
  * @date 2018 /12 /17
  **/
 public class DynamicDataSource extends AbstractRoutingDataSource {
-    private static final Logger logger = LoggerFactory.getLogger(DynamicDataSource.class);
 
     @Override
     protected Object determineCurrentLookupKey() {

@@ -7,6 +7,8 @@ package pers.goetboy.common.exception.service;
  * @author goetb
  */
 public class ServiceTipsException extends BaseServiceException {
+    private static final long serialVersionUID = 1L;
+
     public ServiceTipsException() {
         super();
     }
